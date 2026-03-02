@@ -1,16 +1,17 @@
 spring:
   application:
     name: ScaleLink
-  datasource:
-    url : jdbc:postgresql://localhost:5432/scalelink_db
-    username : somu
-    password : somu
-    driver-class-name : org.postgresql.Driver
 
-    jpa:
-      hibernate :
-        ddl-auto : update
-      show-sql : true
-      properties:
-        hibernate:
-          format_sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/scalelink
+    username: somu
+    password: somu
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
