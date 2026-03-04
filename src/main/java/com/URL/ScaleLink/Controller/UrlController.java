@@ -2,6 +2,8 @@ package com.URL.ScaleLink.Controller;
 
 
 import com.URL.ScaleLink.Service.UrlService;
+import com.URL.ScaleLink.ValidationDTO.ReqDTO;
+import com.URL.ScaleLink.ValidationDTO.ResDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +16,10 @@ public class UrlController {
     private final UrlService urlService;
 
     @PostMapping("/shortenUrl")
-    public ResponseEntity<String> shortcode(@RequestParam String originalUrl){
-        String shortCode=urlService.createShortUrl(originalUrl);
+    public ResponseEntity<ResDTO> shortcode(@RequestBody @jakarta.validation.Valid ReqDTO reqDTO){
+        String shortCode=urlService.createShortUrl(reqDTO.getOriginalUrl());
 
-        return ResponseEntity.ok(shortCode);
+        return ResponseEntity.ok(new ResDTO(shortCode));
     }
 
     @GetMapping("/{shortCode}")
