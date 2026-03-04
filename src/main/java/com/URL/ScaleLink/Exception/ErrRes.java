@@ -18,5 +18,6 @@ public class ErrRes {
     private String errMsg;
 
     public ErrRes(int value, String message) {
+
     }
 }

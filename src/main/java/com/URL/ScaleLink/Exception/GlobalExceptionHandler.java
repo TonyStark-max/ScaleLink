@@ -27,6 +27,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrRes> handleRunTimeErrors(
             RuntimeException ex
     ){
+
         return new ResponseEntity<>(
                 new ErrRes(HttpStatus.NOT_FOUND.value(),ex.getMessage()),
                 HttpStatus.NOT_FOUND
