@@ -23,17 +23,6 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrRes> handleRunTimeErrors(
-            RuntimeException ex
-    ){
-
-        return new ResponseEntity<>(
-                new ErrRes(HttpStatus.NOT_FOUND.value(),ex.getMessage()),
-                HttpStatus.NOT_FOUND
-        );
-    }
-
-    @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrRes> handleRuntime(RuntimeException ex){
         return new ResponseEntity<>(
                 new ErrRes(HttpStatus.TOO_MANY_REQUESTS.value(), ex.getMessage()),

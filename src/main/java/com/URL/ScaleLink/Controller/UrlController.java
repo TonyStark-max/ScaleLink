@@ -2,6 +2,7 @@ package com.URL.ScaleLink.Controller;
 
 
 import com.URL.ScaleLink.Entity.URLEntity;
+import com.URL.ScaleLink.Service.Producer;
 import com.URL.ScaleLink.Service.RateLimiter;
 import com.URL.ScaleLink.Service.UrlService;
 import com.URL.ScaleLink.ValidationDTO.ReqDTO;
@@ -14,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -24,6 +23,7 @@ public class UrlController {
 
     private final UrlService urlService;
     private final RateLimiter rateLimiter;
+    private final Producer rabbitProducer;
 
     @PostMapping("/shortenUrl")
     public ResponseEntity<ResDTO> shortcode(@RequestBody @Valid ReqDTO reqDTO,
@@ -47,6 +47,7 @@ public class UrlController {
         URLEntity url=urlService.getOriginalUrl(shortCode)
                         .orElseThrow(()->new RuntimeException("Short URL not found"));
 
+        rabbitProducer.sendClickEvent(shortCode);
         response.sendRedirect(url.getOriginalUrl());
 
     }

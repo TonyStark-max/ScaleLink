@@ -25,4 +25,7 @@ public class URLEntity {
     private LocalDateTime createdAt;
     private LocalDateTime expiresAt;
     private boolean active=true;
+
+    @Column(name = "click_count")
+    private Long count=0L;
 }
