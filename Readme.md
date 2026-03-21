@@ -230,9 +230,9 @@ The following features are planned to make the system more production ready:
 
 ---
 
-## 🐳 Containerization (Next Step)
+## 🐳 Containerization
 
-The project will be containerized using Docker.
+The project is containerized using Docker.
 
 Services:
 
@@ -260,7 +260,3 @@ This project demonstrates:
 * Scalable API design
 
 ---
-
-## 📜 License
-
-MIT License
