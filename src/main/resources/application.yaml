@@ -3,12 +3,13 @@ spring:
     name: ScaleLink
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/scalelink
+    url: jdbc:postgresql://db:5432/scalelink
     username: somu
     password: somu
     driver-class-name: org.postgresql.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -18,7 +19,7 @@ spring:
 
   data:
     redis:
-      host: localhost
+      host: redis
       port: 6379
 
       rabbitmq:
