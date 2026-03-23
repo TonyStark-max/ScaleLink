@@ -131,12 +131,12 @@ rabbitmq-server
 ```
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/scalelink
+    url: jdbc:postgresql://db:5432/scalelink
     username: postgres
     password: password
 
   redis:
-    host: localhost
+    host: redis
     port: 6379
 
   rabbitmq:
